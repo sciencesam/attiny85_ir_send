@@ -17,8 +17,8 @@
  * January 20015  https://github.com/anorneto/attiny85_ir_send
  */
 
-#ifndef attiny85_ir_send.h
-#define attiny85_ir_send.h
+#ifndef ATTTINY_85_IR_SEND_H
+#define ATTTINY_85_IR_SEND_H
 
 #if defined(ARDUINO) && ARDUINO >= 100
 #include "Arduino.h"
