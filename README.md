@@ -1,4 +1,7 @@
-attiny85_RC6_IR
-===============
-
-Stripped the RC6 code from here http://www.righto.com/2009/08/multi-protocol-infrared-remote-library.html to make it fit onto a attiny85
+After a lot of search I found out that a working IR library that could send command on attiny was missing.
+So I stumbled upon https://github.com/facelessloser/attiny85_RC6_IR ( which this library is totally base and fork of), but it just works for RC6 code and i needed NEC.
+ So in this library I'll add all Send Functions back, making it possible to attiny send any ir code!!
+ 
+ IR Led must be connected to physical pin 6 (Digital 1), as shown on the example.
+ 
+ obs: The library should also work with attiny25/45. 
