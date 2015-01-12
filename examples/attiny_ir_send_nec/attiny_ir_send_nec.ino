@@ -1,11 +1,11 @@
 //Anor Batista Esteves Neto 
-//  04/01/2015  
-//  Attiny send IR Remote Key with button or clap(still working on this)
+//  January 20015 https://github.com/anorneto/attiny85_ir_send
+//  Attiny send IR NEC CODE with button press
 
 #include <attiny85_ir_send.h>
 
 // defining pins
-#define buttonPin  4    //button connected to attiny physical pin 3 and ground
+#define buttonPin  4    //button connected to attiny physical pin 3 and ground ( optional)
 #define ledPin     0      // attiny physical pin 5 , normal led for visual feedback of when we are sending an ir command. 
                           //Use at least a 470R resistor in series with it
 
@@ -64,8 +64,8 @@ void check_button_state( void ){
 }
 
 void send_ir(){
-    irsend.sendNEC(YOUR_NEC_CODE, 32); // ir code for my fan light
-    digitalWrite(ledPin,HIGH); // just a visual feedback
+    irsend.sendNEC(YOUR_NEC_CODE, 32); // sending the nec code
+    digitalWrite(ledPin,HIGH); // blinks an led just for  a visual feedback
     delay(200);
     digitalWrite(ledPin,LOW);
 }

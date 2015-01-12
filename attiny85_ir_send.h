@@ -28,7 +28,7 @@
 
 #define IRLED PB1 // (Used as OC0B) - Physical Pin 6 (Digital 1) on ATtiny85
 
-// assure the complier knows the cpu frequency, and uses 8Mhz by default 
+// Enssures the compiler knows the cpu frequency, and uses 8Mhz by default 
 #ifndef F_CPU
 //#define F_CPU 16000000UL  // 16 MHz
 #define F_CPU 8000000UL  // 8 MHz
