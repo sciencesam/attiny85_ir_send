@@ -5,8 +5,8 @@
 #include <attiny85_ir_send.h>
 
 // defining pins
-#define buttonPin  4    //button connected to attiny physical pin 3 and ground ( optional)
-#define ledPin     0      // attiny physical pin 5 , normal led for visual feedback of when we are sending an ir command. 
+#define buttonPin  4    //button connected to attiny physical pin 3 and ground 
+#define ledPin     0      // (optional)attiny physical pin 5 , normal led for visual feedback of when we are sending an ir command. 
                           //Use at least a 470R resistor in series with it
 
 //change 00000 to a NEC code!
