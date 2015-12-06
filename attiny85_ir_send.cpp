@@ -19,6 +19,71 @@
 
 #include "attiny85_ir_send.h"
 
+ char IRsend::lsb_first(char value)
+{
+  byte result=0;
+
+  for( int i = 0; i< 8; i++){
+    result = result << 1;
+    if(value & 0x01)
+    {
+      result +=1;
+
+    }
+    value = value >> 1;
+  }
+
+  return result;
+
+}
+
+ void IRsend::Airton(char power, char mode, char temperature, char flowControl)
+{
+  char *raw = (char*) malloc(14 * sizeof(char));
+  raw[13] = 0x15 + power + mode +temperature + flowControl;  //checksum
+  // allocate raw
+
+  raw[0] = 0xC4;
+  raw[1] = 0xD3;
+  raw[2] = 0x64;
+  raw[3] = 0x80; //ADDRESS
+  raw[4] = 0x00;
+  raw[5] = lsb_first(power);
+  raw[6] = lsb_first(mode);
+  raw[7] = lsb_first(temperature);
+  raw[8] = lsb_first(flowControl);
+  raw[9] = 0x00;
+  raw[10] = 0x00;
+  raw[11] = 0x00;
+  raw[12] = 0x00;
+
+
+  enableIROut(38);
+  mark(AIRTON_HDR_MARK);
+  space(AIRTON_HDR_SPACE);
+
+    for(int i = 0; i < 13 ; i++)
+  {
+    for(int y = 0; y < 8; y++)
+    {
+      if(raw[i] & 0x80)
+      {
+        mark(AIRTON_HDR_MARK);
+        space(AIRTON_HDR_SPACE);
+      } 
+      else 
+      {
+        mark(AIRTON_HDR_MARK);
+        space(AIRTON_HDR_SPACE);
+      }
+
+      raw[i] <<= 1;
+
+    }
+  }
+space(0);
+}
+
 void IRsend::sendRaw(unsigned int buf[], int len, int hz)
 {
   enableIROut(hz);

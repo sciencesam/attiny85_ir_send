@@ -81,6 +81,11 @@
 #define JVC_ONE_SPACE 1600
 #define JVC_ZERO_SPACE 550
 
+#define AIRTON_HDR_MARK 3000
+#define AIRTON_HDR_SPACE 1728
+#define AIRTON_ONE_MARK 1096
+#define AIRTON_ZERO_MARK 452
+
 class IRsend
 {
 public:
@@ -95,6 +100,8 @@ public:
   void sendSharpRaw(unsigned long data, int nbits);
   void sendPanasonic(unsigned int address, unsigned long data);
   void sendJVC(unsigned long data, int nbits, int repeat); 
+  char lsb_first(char value);
+  void Airton(char power, char mode, char temperature, char flowControl);
   /* *Note instead of sending the REPEAT constant if you want the JVC repeat signal sent, 
   send the original code value and change the repeat argument from 0 to 1. 
   JVC protocol repeats by skipping the header NOT by sending a separate code value like NEC does. */
